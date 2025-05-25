@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Shkubu\FilamentWidgetTabs\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentWidgetTabsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-widget-tabs';
 
     public $description = 'My command';
 

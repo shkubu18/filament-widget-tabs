@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Database\Factories;
+namespace Shkubu\FilamentWidgetTabs\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
