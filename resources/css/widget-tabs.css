@@ -1,0 +1,35 @@
+.fi-widget-tab {
+    @apply flex items-center shadow-md gap-x-2.5 h-24 border rounded-lg px-5 cursor-pointer duration-300;
+}
+
+.fi-widget-tab.fi-inactive {
+    @apply border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white;
+}
+
+.fi-widget-tab.fi-inactive:hover {
+    @apply hover:bg-primary-100 hover:dark:bg-primary-300/60 hover:border-primary-300 dark:hover:border-primary-400/75 hover:shadow-primary-200 dark:hover:shadow-primary-300/55;
+}
+
+.fi-widget-tab.fi-active {
+    @apply bg-primary-100 dark:bg-primary-300/60 border-primary-300 dark:border-primary-400/75 shadow-primary-200 dark:shadow-primary-300/55;
+}
+
+.fi-widget-tab .label {
+    @apply text-gray-500;
+}
+
+.fi-widget-tab.fi-active .label {
+    @apply dark:text-gray-800;
+}
+
+.fi-widget-tab.fi-active .value {
+    @apply dark:text-black;
+}
+
+.fi-widget-tab.fi-inactive:hover .label {
+    @apply dark:text-gray-800;
+}
+
+.fi-widget-tab.fi-inactive:hover .value {
+    @apply dark:text-black;
+}
