@@ -93,38 +93,6 @@ class ListPosts extends ListRecords
 }
 ```
 
-### 3. Update your Blade view to use the Widget Tabs component
-
-Replace the default Filament tabs component with the Widget Tabs component in your list page blade (for example,
-`resources/views/filament/resources/post/pages/list-posts.blade.php`):
-
-```blade
-<x-filament-panels::page
-    @class([
-        'fi-resource-list-records-page',
-        'fi-resource-' . str_replace('/', '-', $this->getResource()::getSlug()),
-    ])
->
-    <div class="flex flex-col gap-y-6">
-        <!-- Use the Widget Tabs component below: -->
-        `<x-filament-widget-tabs::resources.widget-tabs/>`
-
-        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::RESOURCE_PAGES_LIST_RECORDS_TABLE_BEFORE, scopes: $this->getRenderHookScopes()) }}
-
-        {{ $this->table }}
-
-        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::RESOURCE_PAGES_LIST_RECORDS_TABLE_AFTER, scopes: $this->getRenderHookScopes()) }}
-    </div>
-</x-filament-panels::page>
-```
-
-Simply replace the default `<x-filament-panels::resources.tabs/>` with
-`<x-filament-widget-tabs::resources.widget-tabs/>` to enjoy the full widget tab functionality!
-
-> **Note:**  
-> Don't forget to specify the view property in your list page class:
-> `protected static string $view = 'filament.resources.post.pages.list-posts';`
-
 That's all you need to get started with Widget Tabs! Your resource list page will now display beautiful widget-style
 tabs that filter your table data just like default Filament tabs, but with the added benefit of displaying important
 data values within each tab widget.
