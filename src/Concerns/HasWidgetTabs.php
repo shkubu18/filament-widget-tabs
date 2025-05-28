@@ -2,7 +2,10 @@
 
 namespace Shkubu\FilamentWidgetTabs\Concerns;
 
+use Filament\Support\Facades\FilamentView;
+use Filament\View\PanelsRenderHook;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\View\View;
 use Livewire\Attributes\Url;
 use Shkubu\FilamentWidgetTabs\Components\WidgetTab;
 
@@ -15,6 +18,15 @@ trait HasWidgetTabs
      * @var array<string | int, WidgetTab>
      */
     protected array $cachedWidgetTabs;
+
+    public static function bootHasWidgetTabs(): void
+    {
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::RESOURCE_PAGES_LIST_RECORDS_TABLE_BEFORE,
+            fn (): View => view('filament-widget-tabs::components.resources.widget-tabs'),
+            scopes: static::class,
+        );
+    }
 
     public function mount(): void
     {
