@@ -13,7 +13,6 @@ class FilamentWidgetTabsServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package->name('filament-widget-tabs')
-            ->hasAssets()
             ->hasViews();
 
         FilamentView::registerRenderHook(

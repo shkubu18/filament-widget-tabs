@@ -30,13 +30,7 @@ content: [
 ]
 ```
 
-### Publishing Assets and Views
-
-You can publish the assets with:
-
-```bash 
-  php artisan vendor:publish --tag=filament-widget-tabs-assets
-```
+### Publishing Views
 
 If you need to customize the views, you can publish them with:
 
