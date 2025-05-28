@@ -1,7 +1,6 @@
 {
     "name": "shkubu18/filament-widget-tabs",
     "description": "Widget Tabs are modified version of Filament Tabs to display it as a widgets.",
-    "version": "1.0.0",
     "keywords": [
         "shkubu",
         "laravel",
