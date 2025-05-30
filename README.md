@@ -1,6 +1,6 @@
 # Widget Tabs Plugin
 
-![Widget Tabs Banner](./resources/dist/widget-tabs-banner.png)
+<img src="./resources/dist/widget-tabs-banner.jpg" alt="Widget Tabs Banner" class="filament-hidden"/> 
 
 ## Installation
 
