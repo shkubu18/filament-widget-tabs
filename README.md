@@ -44,11 +44,11 @@ Filament Widget Tabs works similarly
 to [Filament Tabs](https://filamentphp.com/docs/3.x/panels/resources/listing-records#using-tabs-to-filter-the-records),
 but displays each tab as a “widget” that can filter your resource’s table with a single click.
 
-### 1. Add the `HasWidgetTabs` trait
+### Add the `HasWidgetTabs` trait
 
 Add the `HasWidgetTabs` trait to your Filament resource page.
 
-### 2. Implement the `getWidgetTabs()` method
+### Implement the `getWidgetTabs()` method
 
 Define your widget tabs by implementing the `getWidgetTabs()` method in your page class.
 Each tab is created with the `WidgetTab::make()` component, allowing you to specify label, icon, value, and filtering
@@ -90,6 +90,8 @@ class ListPosts extends ListRecords
 That's all you need to get started with Widget Tabs! Your resource list page will now display beautiful widget-style
 tabs that filter your table data just like default Filament tabs, but with the added benefit of displaying important
 data values within each tab widget.
+
+## Features
 
 ### Auto-loading Default Active Widget Tab
 
