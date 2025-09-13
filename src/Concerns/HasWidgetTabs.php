@@ -88,8 +88,13 @@ trait HasWidgetTabs
             ->replace(['_', '-'], ' ')
             ->ucfirst();
     }
-
-    public function getWidgetsPerRow(): int
+    /**
+     * Use an integer value, or an array with breakpoints and integer values
+     *  ['sm'=>2, 'md'=>3, 'lg'=>4] or 3
+     *
+     * @return integer|array<string, int>
+     */
+    public function getWidgetsPerRow(): int|array
     {
         return 3;
     }

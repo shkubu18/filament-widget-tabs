@@ -112,11 +112,20 @@ You can customize how many widget tabs appear in each row by overriding the `get
 class:
 
 ```php
- protected function getWidgetsPerRow(): int 
+ protected function getWidgetsPerRow(): int|array
  { 
     return 4; // Default is 3 widgets per row
  }
 ```
+It is also possible to specify an array of breakpoints for different display sizes:
+
+```php
+ protected function getWidgetsPerRow(): int|array
+ { 
+    return ['sm'=>2, 'md'=>3, 'lg'=>4];
+ }
+```
+
 
 ### Labels
 
