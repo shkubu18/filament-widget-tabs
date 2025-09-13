@@ -1,6 +1,9 @@
 # Widget Tabs Plugin
 
-<img src="./resources/dist/widget-tabs-banner.jpg" alt="Widget Tabs Banner" class="filament-hidden"/> 
+<img src="./resources/dist/widget-tabs-banner.jpg" alt="Widget Tabs Banner" class="filament-hidden"/>
+
+[![Latest Version](https://img.shields.io/packagist/v/shkubu18/filament-widget-tabs?style=flat-square)](https://packagist.org/packages/shkubu18/filament-widget-tabs)
+[![Total Downloads](https://img.shields.io/packagist/dt/shkubu18/filament-widget-tabs?style=flat-square)](https://packagist.org/packages/shkubu18/filament-widget-tabs)
 
 ## Installation
 
