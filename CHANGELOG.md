@@ -2,7 +2,19 @@
 
 All notable changes to `filament-widget-tabs` will be documented in this file.
 
-## Release - v1.0.3 - 2025-01-13
+## Release - v1.0.4 - 2025-09-13
+
+### Release Notes - v1.0.4
+
+#### New Features
+
+- **5 Pre-built Color Themes**: Success (green), Danger (red), Info (blue), Warning (yellow), Secondary (gray)
+- **Gradient Effects**: Add beautiful gradient backgrounds to any theme with `->gradient()`
+- **Flexible Theme Methods**: Use shorthand methods (`->success()`) or generic `->theme()` with enums
+- **Custom Theme Classes**: Add custom CSS classes with `->customThemeClasses()` for advanced styling
+- **Dynamic Theme Support**: Use closures for conditional/dynamic theme classes
+
+## Release - v1.0.3 - 2025-09-13
 
 ### Release Notes - v1.0.3
 
