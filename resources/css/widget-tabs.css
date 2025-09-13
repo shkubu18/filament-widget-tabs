@@ -1,127 +1,137 @@
 /* Base widget tab styles */
 .fi-widget-tab {
-    @apply flex items-center shadow-md gap-x-2.5 h-24 border rounded-lg px-5 cursor-pointer duration-300 transition-all;
+    @apply flex items-center shadow gap-x-2.5 h-24 border-[1.5px] rounded-xl px-5 cursor-pointer duration-300 transition-all;
 }
 
 .fi-widget-tab.fi-inactive {
-    @apply border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white;
+    @apply border-gray-200/80 dark:bg-gray-800/90 dark:border-gray-600/60 dark:text-white backdrop-blur-sm;
 }
 
 /* Default hover styles for non-themed widget tabs */
 .fi-widget-tab.fi-inactive:not(.fi-widget-tab-success):not(.fi-widget-tab-warning):not(.fi-widget-tab-danger):not(.fi-widget-tab-info):not(.fi-widget-tab-secondary):hover {
-    @apply bg-primary-50 dark:bg-primary-900/40 border-primary-300 dark:border-primary-600 shadow-primary-100 dark:shadow-primary-900/50;
+    @apply bg-primary-50/80 dark:bg-primary-900/50 border-primary-300/80 dark:border-primary-500/70 shadow-md shadow-primary-100/60 dark:shadow-primary-900/40;
 }
 
 .fi-widget-tab.fi-active {
-    @apply bg-primary-100 dark:bg-primary-900/60 border-primary-300 dark:border-primary-600/75 shadow-sm shadow-primary-200 dark:shadow-primary-900/75 text-primary-900 dark:text-primary-100;
+    @apply bg-primary-100/90 dark:bg-primary-900/70 border-primary-400/90 dark:border-primary-500/80 shadow-md shadow-primary-200/70 dark:shadow-primary-900/60 text-primary-900 dark:text-primary-100;
 }
 
 /* Gradient Styles */
 
 .fi-widget-tab-gradient.fi-widget-tab-success.fi-active {
-    background: linear-gradient(135deg, rgb(220 252 231) 0%, rgb(134 239 172) 100%);
+    background: linear-gradient(135deg, rgb(167 243 208) 0%, rgb(16 185 129) 50%, rgb(5 150 105) 100%);
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4);
 }
 
 .dark .fi-widget-tab-gradient.fi-widget-tab-success.fi-active {
-    background: linear-gradient(135deg, rgb(20 83 45 / 0.6) 0%, rgb(34 197 94 / 0.8) 100%);
+    background: linear-gradient(135deg, rgb(6 78 59 / 0.8) 0%, rgb(16 185 129 / 0.9) 50%, rgb(5 150 105 / 1) 100%);
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.5);
 }
 
 .fi-widget-tab-gradient.fi-widget-tab-warning.fi-active {
-    background: linear-gradient(135deg, rgb(254 243 199) 0%, rgb(252 211 77) 100%);
+    background: linear-gradient(135deg, rgb(254 215 170) 0%, rgb(249 115 22) 50%, rgb(234 88 12) 100%);
+    box-shadow: 0 12px 40px rgba(249, 115, 22, 0.4);
 }
 
 .dark .fi-widget-tab-gradient.fi-widget-tab-warning.fi-active {
-    background: linear-gradient(135deg, rgb(120 53 15 / 0.6) 0%, rgb(245 158 11 / 0.8) 100%);
+    background: linear-gradient(135deg, rgb(154 52 18 / 0.8) 0%, rgb(249 115 22 / 0.9) 50%, rgb(234 88 12 / 1) 100%);
+    box-shadow: 0 12px 40px rgba(249, 115, 22, 0.5);
 }
 
 .fi-widget-tab-gradient.fi-widget-tab-danger.fi-active {
-    background: linear-gradient(135deg, rgb(254 226 226) 0%, rgb(252 165 165) 100%);
+    background: linear-gradient(135deg, rgb(255 228 230) 0%, rgb(244 63 94) 50%, rgb(225 29 72) 100%);
+    box-shadow: 0 12px 40px rgba(244, 63, 94, 0.4);
 }
 
 .dark .fi-widget-tab-gradient.fi-widget-tab-danger.fi-active {
-    background: linear-gradient(135deg, rgb(127 29 29 / 0.6) 0%, rgb(239 68 68 / 0.8) 100%);
+    background: linear-gradient(135deg, rgb(136 19 55 / 0.8) 0%, rgb(244 63 94 / 0.9) 50%, rgb(225 29 72 / 1) 100%);
+    box-shadow: 0 12px 40px rgba(244, 63, 94, 0.5);
 }
 
 .fi-widget-tab-gradient.fi-widget-tab-info.fi-active {
-    background: linear-gradient(135deg, rgb(224 242 254) 0%, rgb(125 211 252) 100%);
+    background: linear-gradient(135deg, rgb(219 234 254) 0%, rgb(59 130 246) 50%, rgb(37 99 235) 100%);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
 }
 
 .dark .fi-widget-tab-gradient.fi-widget-tab-info.fi-active {
-    background: linear-gradient(135deg, rgb(12 74 110 / 0.6) 0%, rgb(14 165 233 / 0.8) 100%);
+    background: linear-gradient(135deg, rgb(30 58 138 / 0.8) 0%, rgb(59 130 246 / 0.9) 50%, rgb(37 99 235 / 1) 100%);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.5);
 }
 
 .fi-widget-tab-gradient.fi-widget-tab-secondary.fi-active {
-    background: linear-gradient(135deg, rgb(241 245 249) 0%, rgb(203 213 225) 100%);
+    background: linear-gradient(135deg, rgb(244 244 245) 0%, rgb(113 113 122) 50%, rgb(82 82 91) 100%);
+    box-shadow: 0 12px 40px rgba(113, 113, 122, 0.3);
 }
 
 .dark .fi-widget-tab-gradient.fi-widget-tab-secondary.fi-active {
-    background: linear-gradient(135deg, rgb(30 41 59 / 0.8) 0%, rgb(71 85 105 / 0.9) 100%);
+    background: linear-gradient(135deg, rgb(39 39 42 / 0.8) 0%, rgb(113 113 122 / 0.9) 50%, rgb(82 82 91 / 1) 100%);
+    box-shadow: 0 12px 40px rgba(113, 113, 122, 0.4);
 }
 
 
 /* Success Theme */
 .fi-widget-tab-success.fi-inactive {
-    @apply border-green-200 dark:bg-green-900/20 dark:border-green-700/50;
+    @apply border-emerald-200/90 dark:bg-emerald-900/25 dark:border-emerald-600/60 backdrop-blur-sm;
 }
 
 .fi-widget-tab-success.fi-inactive:hover {
-    @apply bg-green-50  dark:!text-white dark:bg-green-900/40 border-green-300 dark:border-green-600 shadow-green-100 dark:shadow-green-900/50;
+    @apply bg-emerald-50/80 dark:!text-white dark:bg-emerald-800/50 border-emerald-400/80 dark:border-emerald-500/70 shadow-md shadow-emerald-200/60 dark:shadow-emerald-900/40 scale-[1.02];
 }
 
 .fi-widget-tab-success.fi-active {
-    @apply bg-green-100 dark:bg-green-900/60 border-green-300 dark:border-green-600/75 shadow-green-200 dark:shadow-green-900/75 text-green-900 dark:text-green-100;
+    @apply bg-emerald-100/90 dark:bg-emerald-800/70 border-emerald-400/90 dark:border-emerald-500/80 shadow-md shadow-emerald-300/70 dark:shadow-emerald-800/60 text-emerald-900 dark:text-emerald-100;
 }
 
 /* Warning Theme */
 .fi-widget-tab-warning.fi-inactive {
-    @apply border-amber-200 dark:bg-amber-900/20 dark:border-amber-700/50;
+    @apply border-orange-200/90 dark:bg-orange-900/25 dark:border-orange-600/60 backdrop-blur-sm;
 }
 
 .fi-widget-tab-warning.fi-inactive:hover {
-    @apply bg-amber-50 dark:bg-amber-900/40 border-amber-300 dark:border-amber-600 shadow-amber-100 dark:shadow-amber-900/50;
+    @apply bg-orange-50/80 dark:bg-orange-800/50 border-orange-400/80 dark:border-orange-500/70 shadow-md shadow-orange-200/60 dark:shadow-orange-900/40 scale-[1.02];
 }
 
 .fi-widget-tab-warning.fi-active {
-    @apply bg-amber-100 dark:bg-amber-900/60 border-amber-300 dark:border-amber-600/75 shadow-amber-200 dark:shadow-amber-900/75 text-amber-900 dark:text-amber-100;
+    @apply bg-orange-100/90 dark:bg-orange-800/70 border-orange-400/90 dark:border-orange-500/80 shadow-md shadow-orange-300/70 dark:shadow-orange-800/60 text-orange-900 dark:text-orange-100;
 }
 
 /* Danger Theme */
 .fi-widget-tab-danger.fi-inactive {
-    @apply border-red-200 dark:bg-red-900/20 dark:border-red-700/50;
+    @apply border-rose-200/90 dark:bg-rose-900/25 dark:border-rose-600/60 backdrop-blur-sm;
 }
 
 .fi-widget-tab-danger.fi-inactive:hover {
-    @apply bg-red-50 dark:bg-red-900/40 border-red-300 dark:border-red-600 shadow-red-100 dark:shadow-red-900/50;
+    @apply bg-rose-50/80 dark:bg-rose-800/50 border-rose-400/80 dark:border-rose-500/70 shadow-md shadow-rose-200/60 dark:shadow-rose-900/40 scale-[1.02];
 }
 
 .fi-widget-tab-danger.fi-active {
-    @apply bg-red-100 dark:bg-red-900/60 border-red-300 dark:border-red-600/75 shadow-red-200 dark:shadow-red-900/75 text-red-900 dark:text-red-100;
+    @apply bg-rose-100/90 dark:bg-rose-800/70 border-rose-400/90 dark:border-rose-500/80 shadow-md shadow-rose-300/70 dark:shadow-rose-800/60 text-rose-900 dark:text-rose-100;
 }
 
 /* Info Theme */
 .fi-widget-tab-info.fi-inactive {
-    @apply border-sky-200 dark:bg-sky-900/20 dark:border-sky-700/50;
+    @apply border-blue-200/90 dark:bg-blue-900/25 dark:border-blue-600/60 backdrop-blur-sm;
 }
 
 .fi-widget-tab-info.fi-inactive:hover {
-    @apply bg-sky-50 dark:bg-sky-900/40 border-sky-300 dark:border-sky-600 shadow-sky-100 dark:shadow-sky-900/50;
+    @apply bg-blue-50/80 dark:bg-blue-800/50 border-blue-400/80 dark:border-blue-500/70 shadow-md shadow-blue-200/60 dark:shadow-blue-900/40 scale-[1.02];
 }
 
 .fi-widget-tab-info.fi-active {
-    @apply bg-sky-100 dark:bg-sky-900/60 border-sky-300 dark:border-sky-600/75 shadow-sky-200 dark:shadow-sky-900/75 text-sky-900 dark:text-sky-100;
+    @apply bg-blue-100/90 dark:bg-blue-800/70 border-blue-400/90 dark:border-blue-500/80 shadow-md shadow-blue-300/70 dark:shadow-blue-800/60 text-blue-900 dark:text-blue-100;
 }
 
 /* Secondary Theme */
 .fi-widget-tab-secondary.fi-inactive {
-    @apply border-slate-200 dark:bg-slate-800/40 dark:border-slate-600/50;
+    @apply border-zinc-200/90 dark:bg-zinc-800/50 dark:border-zinc-600/60 backdrop-blur-sm;
 }
 
 .fi-widget-tab-secondary.fi-inactive:hover {
-    @apply bg-slate-50 dark:bg-slate-800/60 border-slate-300 dark:border-slate-500 shadow-slate-100 dark:shadow-slate-800/50;
+    @apply bg-zinc-50/80 dark:bg-zinc-700/60 border-zinc-400/80 dark:border-zinc-500/70 shadow-md shadow-zinc-200/60 dark:shadow-zinc-800/50 scale-[1.02];
 }
 
 .fi-widget-tab-secondary.fi-active {
-    @apply bg-slate-100 dark:bg-slate-800/80 border-slate-300 dark:border-slate-500/75 shadow-slate-200 dark:shadow-slate-800/75 text-slate-900 dark:text-slate-100;
+    @apply bg-zinc-100/90 dark:bg-zinc-700/80 border-zinc-400/90 dark:border-zinc-500/80 shadow-md shadow-zinc-300/70 dark:shadow-zinc-700/75 text-zinc-900 dark:text-zinc-100;
 }
 
 .fi-widget-tab .label {
@@ -130,23 +140,23 @@
 
 /* Icon Colors for Themes */
 .fi-widget-tab-success .fi-widget-tab-icon {
-    @apply text-green-600 dark:text-green-400;
+    @apply text-emerald-600 dark:text-emerald-400;
 }
 
 .fi-widget-tab-warning .fi-widget-tab-icon {
-    @apply text-amber-600 dark:text-amber-400;
+    @apply text-orange-600 dark:text-orange-400;
 }
 
 .fi-widget-tab-danger .fi-widget-tab-icon {
-    @apply text-red-600 dark:text-red-400;
+    @apply text-rose-600 dark:text-rose-400;
 }
 
 .fi-widget-tab-info .fi-widget-tab-icon {
-    @apply text-sky-600 dark:text-sky-400;
+    @apply text-blue-600 dark:text-blue-400;
 }
 
 .fi-widget-tab-secondary .fi-widget-tab-icon {
-    @apply text-slate-600 dark:text-slate-400;
+    @apply text-zinc-600 dark:text-zinc-400;
 }
 
 /* Default icon color for non-themed tabs */

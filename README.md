@@ -257,7 +257,7 @@ WidgetTab::make()
 
 **Preview:**
 
-<img src="./resources/dist/secondary-gradient-widget-showcase.png" alt="Gradient Widget Showcase" width="500"/>
+<img src="./resources/dist/secondary-grandient-widget-showcase.png" alt="Gradient Widget Showcase" width="450"/>
 
 #### Custom Theme Classes
 
