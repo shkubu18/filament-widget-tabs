@@ -72,16 +72,6 @@ trait HasWidgetTabs
         return [];
     }
 
-    public function updatedActiveWidgetTab(): void
-    {
-        $this->resetPage();
-    }
-
-    public function updateActiveWidgetTabInstantly(string $widgetTab): void
-    {
-        $this->activeWidgetTab = $widgetTab;
-    }
-
     public function generateWidgetTabLabel(string $key): string
     {
         return (string) str($key)
