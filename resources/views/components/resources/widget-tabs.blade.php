@@ -31,6 +31,7 @@
                     :isPercentage="$widgetTab->isPercentage()"
                     :percentagePrecision="$widgetTab->getPercentagePrecision()"
                     :label="$widgetTab->getLabel() ?? $this->generateTabLabel($widgetTabKey)"
+                    :theme-classes="$widgetTab->getThemeClasses()"
                     :attributes="$widgetTab->getExtraAttributeBag()"
                 />
             @endforeach

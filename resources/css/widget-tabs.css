@@ -1,35 +1,155 @@
+/* Base widget tab styles */
 .fi-widget-tab {
-    @apply flex items-center shadow-md gap-x-2.5 h-24 border rounded-lg px-5 cursor-pointer duration-300;
+    @apply flex items-center shadow-md gap-x-2.5 h-24 border rounded-lg px-5 cursor-pointer duration-300 transition-all;
 }
 
 .fi-widget-tab.fi-inactive {
     @apply border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white;
 }
 
-.fi-widget-tab.fi-inactive:hover {
-    @apply hover:bg-primary-100 hover:dark:bg-primary-300/60 hover:border-primary-300 dark:hover:border-primary-400/75 hover:shadow-primary-200 dark:hover:shadow-primary-300/55;
+/* Default hover styles for non-themed widget tabs */
+.fi-widget-tab.fi-inactive:not(.fi-widget-tab-success):not(.fi-widget-tab-warning):not(.fi-widget-tab-danger):not(.fi-widget-tab-info):not(.fi-widget-tab-secondary):hover {
+    @apply bg-primary-50 dark:bg-primary-900/40 border-primary-300 dark:border-primary-600 shadow-primary-100 dark:shadow-primary-900/50;
 }
 
 .fi-widget-tab.fi-active {
-    @apply bg-primary-100 dark:bg-primary-300/60 border-primary-300 dark:border-primary-400/75 shadow-primary-200 dark:shadow-primary-300/55;
+    @apply bg-primary-100 dark:bg-primary-900/60 border-primary-300 dark:border-primary-600/75 shadow-sm shadow-primary-200 dark:shadow-primary-900/75 text-primary-900 dark:text-primary-100;
+}
+
+/* Gradient Styles */
+
+.fi-widget-tab-gradient.fi-widget-tab-success.fi-active {
+    background: linear-gradient(135deg, rgb(220 252 231) 0%, rgb(134 239 172) 100%);
+}
+
+.dark .fi-widget-tab-gradient.fi-widget-tab-success.fi-active {
+    background: linear-gradient(135deg, rgb(20 83 45 / 0.6) 0%, rgb(34 197 94 / 0.8) 100%);
+}
+
+.fi-widget-tab-gradient.fi-widget-tab-warning.fi-active {
+    background: linear-gradient(135deg, rgb(254 243 199) 0%, rgb(252 211 77) 100%);
+}
+
+.dark .fi-widget-tab-gradient.fi-widget-tab-warning.fi-active {
+    background: linear-gradient(135deg, rgb(120 53 15 / 0.6) 0%, rgb(245 158 11 / 0.8) 100%);
+}
+
+.fi-widget-tab-gradient.fi-widget-tab-danger.fi-active {
+    background: linear-gradient(135deg, rgb(254 226 226) 0%, rgb(252 165 165) 100%);
+}
+
+.dark .fi-widget-tab-gradient.fi-widget-tab-danger.fi-active {
+    background: linear-gradient(135deg, rgb(127 29 29 / 0.6) 0%, rgb(239 68 68 / 0.8) 100%);
+}
+
+.fi-widget-tab-gradient.fi-widget-tab-info.fi-active {
+    background: linear-gradient(135deg, rgb(224 242 254) 0%, rgb(125 211 252) 100%);
+}
+
+.dark .fi-widget-tab-gradient.fi-widget-tab-info.fi-active {
+    background: linear-gradient(135deg, rgb(12 74 110 / 0.6) 0%, rgb(14 165 233 / 0.8) 100%);
+}
+
+.fi-widget-tab-gradient.fi-widget-tab-secondary.fi-active {
+    background: linear-gradient(135deg, rgb(241 245 249) 0%, rgb(203 213 225) 100%);
+}
+
+.dark .fi-widget-tab-gradient.fi-widget-tab-secondary.fi-active {
+    background: linear-gradient(135deg, rgb(30 41 59 / 0.8) 0%, rgb(71 85 105 / 0.9) 100%);
+}
+
+
+/* Success Theme */
+.fi-widget-tab-success.fi-inactive {
+    @apply border-green-200 dark:bg-green-900/20 dark:border-green-700/50;
+}
+
+.fi-widget-tab-success.fi-inactive:hover {
+    @apply bg-green-50  dark:!text-white dark:bg-green-900/40 border-green-300 dark:border-green-600 shadow-green-100 dark:shadow-green-900/50;
+}
+
+.fi-widget-tab-success.fi-active {
+    @apply bg-green-100 dark:bg-green-900/60 border-green-300 dark:border-green-600/75 shadow-green-200 dark:shadow-green-900/75 text-green-900 dark:text-green-100;
+}
+
+/* Warning Theme */
+.fi-widget-tab-warning.fi-inactive {
+    @apply border-amber-200 dark:bg-amber-900/20 dark:border-amber-700/50;
+}
+
+.fi-widget-tab-warning.fi-inactive:hover {
+    @apply bg-amber-50 dark:bg-amber-900/40 border-amber-300 dark:border-amber-600 shadow-amber-100 dark:shadow-amber-900/50;
+}
+
+.fi-widget-tab-warning.fi-active {
+    @apply bg-amber-100 dark:bg-amber-900/60 border-amber-300 dark:border-amber-600/75 shadow-amber-200 dark:shadow-amber-900/75 text-amber-900 dark:text-amber-100;
+}
+
+/* Danger Theme */
+.fi-widget-tab-danger.fi-inactive {
+    @apply border-red-200 dark:bg-red-900/20 dark:border-red-700/50;
+}
+
+.fi-widget-tab-danger.fi-inactive:hover {
+    @apply bg-red-50 dark:bg-red-900/40 border-red-300 dark:border-red-600 shadow-red-100 dark:shadow-red-900/50;
+}
+
+.fi-widget-tab-danger.fi-active {
+    @apply bg-red-100 dark:bg-red-900/60 border-red-300 dark:border-red-600/75 shadow-red-200 dark:shadow-red-900/75 text-red-900 dark:text-red-100;
+}
+
+/* Info Theme */
+.fi-widget-tab-info.fi-inactive {
+    @apply border-sky-200 dark:bg-sky-900/20 dark:border-sky-700/50;
+}
+
+.fi-widget-tab-info.fi-inactive:hover {
+    @apply bg-sky-50 dark:bg-sky-900/40 border-sky-300 dark:border-sky-600 shadow-sky-100 dark:shadow-sky-900/50;
+}
+
+.fi-widget-tab-info.fi-active {
+    @apply bg-sky-100 dark:bg-sky-900/60 border-sky-300 dark:border-sky-600/75 shadow-sky-200 dark:shadow-sky-900/75 text-sky-900 dark:text-sky-100;
+}
+
+/* Secondary Theme */
+.fi-widget-tab-secondary.fi-inactive {
+    @apply border-slate-200 dark:bg-slate-800/40 dark:border-slate-600/50;
+}
+
+.fi-widget-tab-secondary.fi-inactive:hover {
+    @apply bg-slate-50 dark:bg-slate-800/60 border-slate-300 dark:border-slate-500 shadow-slate-100 dark:shadow-slate-800/50;
+}
+
+.fi-widget-tab-secondary.fi-active {
+    @apply bg-slate-100 dark:bg-slate-800/80 border-slate-300 dark:border-slate-500/75 shadow-slate-200 dark:shadow-slate-800/75 text-slate-900 dark:text-slate-100;
 }
 
 .fi-widget-tab .label {
-    @apply text-gray-500;
+    @apply text-gray-500 dark:text-gray-400;
 }
 
-.fi-widget-tab.fi-active .label {
-    @apply dark:text-gray-800;
+/* Icon Colors for Themes */
+.fi-widget-tab-success .fi-widget-tab-icon {
+    @apply text-green-600 dark:text-green-400;
 }
 
-.fi-widget-tab.fi-active .value {
-    @apply dark:text-black;
+.fi-widget-tab-warning .fi-widget-tab-icon {
+    @apply text-amber-600 dark:text-amber-400;
 }
 
-.fi-widget-tab.fi-inactive:hover .label {
-    @apply dark:text-gray-800;
+.fi-widget-tab-danger .fi-widget-tab-icon {
+    @apply text-red-600 dark:text-red-400;
 }
 
-.fi-widget-tab.fi-inactive:hover .value {
-    @apply dark:text-black;
+.fi-widget-tab-info .fi-widget-tab-icon {
+    @apply text-sky-600 dark:text-sky-400;
+}
+
+.fi-widget-tab-secondary .fi-widget-tab-icon {
+    @apply text-slate-600 dark:text-slate-400;
+}
+
+/* Default icon color for non-themed tabs */
+.fi-widget-tab:not(.fi-widget-tab-success):not(.fi-widget-tab-warning):not(.fi-widget-tab-danger):not(.fi-widget-tab-info):not(.fi-widget-tab-secondary) .fi-widget-tab-icon {
+    @apply text-primary-600 dark:text-primary-400;
 }

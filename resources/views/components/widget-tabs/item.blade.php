@@ -13,6 +13,7 @@
     'value' => null,
     'precision',
     'percentagePrecision',
+    'themeClasses' => [],
 ])
 
 @php
@@ -26,7 +27,7 @@
             'fi-active': {{ $alpineActive }}
         }"
     @endif
-    {{ $attributes->merge(['aria-selected' => $active, 'role' => 'tab'])->class(['fi-widget-tab']) }}
+    {{ $attributes->merge(['aria-selected' => $active, 'role' => 'tab'])->class(array_merge(['fi-widget-tab'], $themeClasses)) }}
 >
     <div class="flex items-center gap-x-6">
         @if($icon)
@@ -36,7 +37,7 @@
                 <x-filament::icon
                     :icon="$icon"
                     @class([
-                      'text-primary-600 dark:text-primary-800',
+                      'fi-widget-tab-icon',
                       match ($iconSize) {
                           IconSize::Small, 'sm' => 'h-4 w-4',
                           IconSize::Medium, 'md' => 'h-6 w-6',
@@ -50,7 +51,7 @@
     </div>
     <div class="flex flex-col">
         <span class="font-medium text-sm label">{{ $label }}</span>
-        <span class="font-bold text-2xl font-bold value">
+        <span class="text-2xl font-bold value">
             {{ is_numeric($value)
                 ? ($isPercentage
                     ? Number::percentage($value, $percentagePrecision)

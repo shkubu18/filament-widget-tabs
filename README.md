@@ -117,15 +117,15 @@ class:
     return 4; // Default is 3 widgets per row
  }
 ```
+
 It is also possible to specify an array of breakpoints for different display sizes:
 
 ```php
  protected function getWidgetsPerRow(): int|array
  { 
-    return ['sm'=>2, 'md'=>3, 'lg'=>4];
+    return ['sm' => 2, 'md' => 3, 'lg' => 4];
  }
 ```
-
 
 ### Labels
 
@@ -194,6 +194,100 @@ WidgetTab::make()
     ->percentage() 
     ->percentagePrecision(1) // Will display as "25.4%" instead of "25%"
 ```
+
+### Theming
+
+Widget Tabs supports advanced theming with pre-built color schemes and gradients.
+
+#### Pre-built Color Schemes
+
+Apply different color themes to your widget tabs:
+
+``` php
+WidgetTab::make()
+    ->label('Success Posts')
+    ->value(Post::where('status', 'published')->count())
+    ->success()
+
+WidgetTab::make()
+    ->label('Failed Posts')
+    ->value(Post::where('status', 'failed')->count())
+    ->danger()
+    
+WidgetTab::make()
+    ->label('Draft Posts')
+    ->value(Post::where('status', 'draft')->count())
+    ->info()
+    //...
+```
+
+**Preview:**
+
+<div align="center">
+
+|                                     **Success Theme**                                      |                                        **Danger Theme**                                        |                                    **Info Theme**                                    |
+|:------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|
+| <img src="./resources/dist/success-widget-showcase.png" alt="Success Widget" width="400"/> |    <img src="./resources/dist/danger-widget-showcase.png" alt="Danger Widget" width="400"/>    | <img src="./resources/dist/info-widget-showcase.png" alt="Info Widget" width="400"/> |
+|                                     **Warning Theme**                                      |                                      **Secondary Theme**                                       |                                                                                      |
+| <img src="./resources/dist/warning-widget-showcase.png" alt="Warning Widget" width="400"/> | <img src="./resources/dist/secondary-widget-showcase.png" alt="Secondary Widget" width="400"/> |                                                                                      |
+
+</div>
+
+
+You can also use the generic `theme()` method with enum or string values:
+
+``` php
+use Shkubu\FilamentWidgetTabs\Enums\WidgetTabTheme;
+
+WidgetTab::make()
+    ->theme(WidgetTabTheme::Success) // Using enum
+```
+
+#### Gradient Effects
+
+Add beautiful gradient backgrounds to your widget tabs:
+
+``` php
+WidgetTab::make()
+    ->label('Premium Posts')
+    ->value(Post::where('is_premium', true)->count())
+    ->success()
+    ->gradient() // Adds gradient effect
+```
+
+**Preview:**
+
+<img src="./resources/dist/secondary-gradient-widget-showcase.png" alt="Gradient Widget Showcase" width="500"/>
+
+#### Custom Theme Classes
+
+For advanced customization, you can add custom CSS classes:
+
+``` php
+WidgetTab::make()
+    ->label('Custom Styled')
+    ->value(100)
+    ->customThemeClasses([
+        'custom-shadow',
+        'custom-border',
+        'my-special-theme'
+    ])
+
+// Or use a closure for dynamic classes
+WidgetTab::make()
+    ->customThemeClasses(fn () => [
+        'dynamic-class-' . now()->format('Y'),
+        'user-role-' . auth()->user()->role
+    ])
+```
+
+#### Available Themes
+
+- **Secondary**: Neutral gray theme for secondary content
+- **Success**: Green theme for positive states and success messages
+- **Warning**: Yellow/orange theme for warnings and attention
+- **Danger**: Red theme for errors and critical states
+- **Info**: Blue theme for informational content
 
 ### Extra Attributes
 

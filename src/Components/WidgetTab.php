@@ -10,6 +10,7 @@ use Shkubu\FilamentWidgetTabs\Components\Concerns\HasIcon;
 use Shkubu\FilamentWidgetTabs\Components\Concerns\HasLabel;
 use Shkubu\FilamentWidgetTabs\Components\Concerns\HasPercentage;
 use Shkubu\FilamentWidgetTabs\Components\Concerns\HasPrecision;
+use Shkubu\FilamentWidgetTabs\Components\Concerns\HasTheme;
 use Shkubu\FilamentWidgetTabs\Components\Concerns\HasValue;
 
 class WidgetTab extends Component
@@ -19,6 +20,7 @@ class WidgetTab extends Component
     use HasLabel;
     use HasPercentage;
     use HasPrecision;
+    use HasTheme;
     use HasValue;
 
     protected ?Closure $modifyQueryUsing = null;
