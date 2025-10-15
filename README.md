@@ -254,7 +254,7 @@ Add beautiful gradient backgrounds to your widget tabs:
 WidgetTab::make()
     ->label('Premium Posts')
     ->value(Post::where('is_premium', true)->count())
-    ->success()
+    ->secondary()
     ->gradient() // Adds gradient effect
 ```
 
