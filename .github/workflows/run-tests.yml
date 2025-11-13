@@ -1,4 +1,4 @@
-name: run-tests
+name: Run Tests
 
 on:
   push:
@@ -7,21 +7,69 @@ on:
     branches: [ main ]
 
 jobs:
+  code-style:
+    name: "Check Code Style (Pint)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+          coverage: none
+
+      - name: Setup Composer Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache/files
+          key: composer-php-8.2-locked
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Run Pint
+        run: vendor/bin/pint --test
+
+  static-analysis:
+    name: "Static Analysis (PHPStan)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+          coverage: none
+
+      - name: Setup Composer Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache/files
+          key: composer-php-8.2-locked
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse
+
   test:
-    runs-on: ${{ matrix.os }}
+    name: "P${{ matrix.php }} - L${{ matrix.laravel }} - PHPUnit"
+    runs-on: ubuntu-latest
+    needs: [ code-style, static-analysis ]
     strategy:
       fail-fast: true
       matrix:
-        os: [ ubuntu-latest, windows-latest ]
-        php: [ 8.2, 8.1 ]
-        laravel: [ 10.* ]
-        stability: [ prefer-lowest, prefer-stable ]
-        include:
-          - laravel: 10.*
-            testbench: 8.*
-            carbon: 2.*
-
-    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
+        php: [ '8.1', '8.2', '8.3' ]
+        laravel: [ '10.*' ]
+        testbench: [ '8.*' ]
+        carbon: [ '2.*' ]
 
     steps:
       - name: Checkout code
@@ -31,22 +79,19 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
+          extensions: dom, curl, libxml, mbstring, zip, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, fileinfo
           coverage: none
 
-      - name: Setup problem matchers
-        run: |
-          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+      - name: Setup Composer Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache/files
+          key: composer-php-${{ matrix.php }}-laravel-${{ matrix.laravel }}
 
       - name: Install dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.carbon }}" --dev --no-interaction --no-update
-          composer config audit.ignore PKSA-365x-2zjk-pt47
-          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
-
-      - name: List Installed Dependencies
-        run: composer show -D
+          composer update --prefer-dist --no-interaction
 
       - name: Execute tests
         run: vendor/bin/pest --ci
