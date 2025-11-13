@@ -8,7 +8,7 @@
 ## Installation
 
 > [!WARNING]
-> This package currently supports **Filament v3 only** due to its reliance on Tailwind v3. Filament v4 support is not yet available.
+> This plugin currently supports **Filament v3 only** due to its reliance on Tailwind v3. Filament v4 support is not yet available.
 
 You can install the package via composer:
 
