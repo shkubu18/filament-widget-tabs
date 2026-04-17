@@ -39,7 +39,26 @@ trait HasWidgetTabs
 
     protected function shouldLoadDefaultActiveWidgetTab(): bool
     {
+        return $this->shouldAutoLoadDefaultActiveWidgetTab();
+    }
+
+    /**
+     * @deprecated override shouldLoadDefaultActiveWidgetTab() instead.
+     */
+    protected function shouldAutoLoadDefaultActiveWidgetTab(): bool
+    {
         return false;
+    }
+
+    public function updatedActiveWidgetTab(): void
+    {
+        if (method_exists($this, 'resetPage')) {
+            $this->resetPage();
+        }
+
+        if (method_exists($this, 'flushCachedTableRecords')) {
+            $this->flushCachedTableRecords();
+        }
     }
 
     protected function loadDefaultActiveWidgetTab(): void
@@ -90,9 +109,9 @@ trait HasWidgetTabs
         return 3;
     }
 
-    protected function modifyQueryWithActiveTab(Builder $query): Builder
+    protected function modifyQueryWithActiveTab(Builder $query, bool $isResolvingRecord = false): Builder
     {
-        if (blank(filled($this->activeWidgetTab))) {
+        if (blank($this->activeWidgetTab)) {
             return $query;
         }
 
@@ -102,6 +121,12 @@ trait HasWidgetTabs
             return $query;
         }
 
-        return $widgetTabs[$this->activeWidgetTab]->modifyQuery($query);
+        $widgetTab = $widgetTabs[$this->activeWidgetTab];
+
+        if ($isResolvingRecord && $widgetTab->isQueryExcludedWhenResolvingRecord()) {
+            return $query;
+        }
+
+        return $widgetTab->modifyQuery($query);
     }
 }

@@ -12,7 +12,6 @@ use Filament\Notifications\NotificationsServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
@@ -20,32 +19,23 @@ use Shkubu\FilamentWidgetTabs\FilamentWidgetTabsServiceProvider;
 
 class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Shkubu\\FilamentWidgetTabs\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
-        );
-    }
-
     protected function getPackageProviders($app)
     {
-        return [
-            ActionsServiceProvider::class,
+        return array_values(array_filter([
+            class_exists(ActionsServiceProvider::class) ? ActionsServiceProvider::class : null,
             BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
             BladeIconsServiceProvider::class,
-            FilamentServiceProvider::class,
-            FormsServiceProvider::class,
-            InfolistsServiceProvider::class,
+            class_exists(FilamentServiceProvider::class) ? FilamentServiceProvider::class : null,
+            class_exists(FormsServiceProvider::class) ? FormsServiceProvider::class : null,
+            class_exists(InfolistsServiceProvider::class) ? InfolistsServiceProvider::class : null,
             LivewireServiceProvider::class,
-            NotificationsServiceProvider::class,
-            SupportServiceProvider::class,
-            TablesServiceProvider::class,
-            WidgetsServiceProvider::class,
+            class_exists(NotificationsServiceProvider::class) ? NotificationsServiceProvider::class : null,
+            class_exists(SupportServiceProvider::class) ? SupportServiceProvider::class : null,
+            class_exists(TablesServiceProvider::class) ? TablesServiceProvider::class : null,
+            class_exists(WidgetsServiceProvider::class) ? WidgetsServiceProvider::class : null,
             FilamentWidgetTabsServiceProvider::class,
-        ];
+        ]));
     }
 
     public function getEnvironmentSetUp($app)

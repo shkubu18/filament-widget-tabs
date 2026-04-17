@@ -60,16 +60,23 @@ jobs:
         run: vendor/bin/phpstan analyse
 
   test:
-    name: "P${{ matrix.php }} - L${{ matrix.laravel }} - PHPUnit"
+    name: "P${{ matrix.php }} - F${{ matrix.filament }} - L${{ matrix.laravel }} - PHPUnit"
     runs-on: ubuntu-latest
     needs: [ code-style, static-analysis ]
     strategy:
       fail-fast: true
       matrix:
-        php: [ '8.1', '8.2', '8.3' ]
-        laravel: [ '10.*' ]
-        testbench: [ '8.*' ]
-        carbon: [ '2.*' ]
+        include:
+          - php: '8.2'
+            filament: '^4.0'
+            livewire: '^3.5'
+            laravel: '^11.0'
+            testbench: '^9.0'
+          - php: '8.3'
+            filament: '^5.0'
+            livewire: '^4.1'
+            laravel: '^12.0'
+            testbench: '^10.0'
 
     steps:
       - name: Checkout code
@@ -86,11 +93,11 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.composer/cache/files
-          key: composer-php-${{ matrix.php }}-laravel-${{ matrix.laravel }}
+          key: composer-php-${{ matrix.php }}-filament-${{ matrix.filament }}-laravel-${{ matrix.laravel }}
 
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.carbon }}" --dev --no-interaction --no-update
+          composer require "filament/filament:${{ matrix.filament }}" "livewire/livewire:${{ matrix.livewire }}" "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --dev --no-interaction --no-update
           composer update --prefer-dist --no-interaction
 
       - name: Execute tests

@@ -6,9 +6,9 @@ use Closure;
 
 trait HasPercentage
 {
-    protected bool $isPercentage = false;
+    protected bool | Closure $isPercentage = false;
 
-    protected int $percentagePrecision = 0;
+    protected int | Closure $percentagePrecision = 0;
 
     public function percentage(bool | Closure $condition = true): static
     {

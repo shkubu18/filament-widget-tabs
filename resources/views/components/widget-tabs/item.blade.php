@@ -26,8 +26,10 @@
             'fi-inactive': ! ({{ $alpineActive }}),
             'fi-active': {{ $alpineActive }}
         }"
+        x-bind:aria-selected="{{ $alpineActive }}"
+        x-bind:tabindex="{{ $alpineActive }} ? 0 : -1"
     @endif
-    {{ $attributes->merge(['aria-selected' => $active, 'role' => 'tab'])->class(array_merge(['fi-widget-tab'], $themeClasses)) }}
+    {{ $attributes->merge(['aria-selected' => $active, 'role' => 'tab', 'tabindex' => $active ? 0 : -1])->class(array_merge(['fi-widget-tab'], $themeClasses)) }}
 >
     <div class="flex items-center gap-x-6">
         @if($icon)

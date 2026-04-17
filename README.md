@@ -7,33 +7,34 @@
 
 ## Installation
 
-> [!WARNING]
-> This plugin currently supports **Filament v3 only** due to its reliance on Tailwind v3. Filament v4 support is not yet available.
+### Version Matrix
 
-You can install the package via composer:
+- **`1.x`**: Filament `^3.0` (maintenance-only)
+- **`2.x`**: Filament `^4.0|^5.0` (active development)
+
+### Release Policy
+
+- New features are developed in `2.x` (Filament v4/v5).
+- `1.x` receives only critical/security backports for Filament v3.
+
+### Install For Filament v4/v5
 
 ```bash
-  composer require shkubu18/filament-widget-tabs
+composer require shkubu18/filament-widget-tabs:^2.0
 ```
 
-In an effort to align with Filament's theming methodology you will need to use a custom theme to use this plugin.
+Then publish/register Filament assets:
 
-> [!IMPORTANT]
-> If you have not set up a custom theme and are using a Panel follow the instructions in
-> the [Filament Docs](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme).
-
-1. Import the plugin's stylesheet in your theme's css file.
-
-```css
-@import '<path-to-vendor>/shkubu18/filament-widget-tabs/resources/css/widget-tabs.css';
+```bash
+php artisan filament:assets
 ```
 
-2. Add the plugin's views to your `tailwind.config.js` file.
+### Install For Filament v3
 
-```js
-content: [
-    '<path-to-vendor>/shkubu18/filament-widget-tabs/resources/**/*.blade.php',
-]
+Use the maintenance line:
+
+```bash
+composer require shkubu18/filament-widget-tabs:^1.0
 ```
 
 ### Publishing Views
@@ -47,7 +48,7 @@ If you need to customize the views, you can publish them with:
 ## Usage
 
 Filament Widget Tabs works similarly
-to [Filament Tabs](https://filamentphp.com/docs/3.x/panels/resources/listing-records#using-tabs-to-filter-the-records),
+to [Filament Tabs](https://filamentphp.com/docs/5.x/resources/listing-records#using-tabs-to-filter-the-records),
 but displays each tab as a “widget” that can filter your resource’s table with a single click.
 
 ### Add the `HasWidgetTabs` trait
@@ -102,15 +103,18 @@ data values within each tab widget.
 ### Auto-loading Default Active Widget Tab
 
 By default, widget tabs will not automatically load a default active widget tab when the page mounts. If you want to
-enable automatic loading of the default widget tab, you can override the `shouldAutoLoadDefaultActiveWidgetTab` method
+enable automatic loading of the default widget tab, you can override the `shouldLoadDefaultActiveWidgetTab` method
 in your page class:
 
-```php 
-protected function shouldAutoLoadDefaultActiveWidgetTab(): bool
+```php
+protected function shouldLoadDefaultActiveWidgetTab(): bool
 {
     return true; // Enable auto-loading of the default active widget tab
 }
 ```
+
+> [!NOTE]
+> `shouldAutoLoadDefaultActiveWidgetTab()` is still supported as a backward-compatible alias.
 
 ### Widget Tabs Layout
 
@@ -319,6 +323,24 @@ Or use the shorter `query()` method:
 WidgetTab::make()
     ->query(fn (Builder $query): Builder => $query->where('status', 'published'))
 ```
+
+### Record Resolution Query Behavior (Filament v4/v5)
+
+When resolving a record (for example, view/edit actions), you can skip the widget tab query:
+
+```php
+WidgetTab::make()
+    ->query(fn (Builder $query): Builder => $query->where('status', 'published'))
+    ->excludeQueryWhenResolvingRecord()
+```
+
+## Migration From v1.x To v2.x
+
+- Upgrade dependency to `shkubu18/filament-widget-tabs:^2.0`
+- Run `php artisan filament:assets`
+- Keep using `HasWidgetTabs` and `WidgetTab` the same way
+- `shouldAutoLoadDefaultActiveWidgetTab()` remains supported, but prefer `shouldLoadDefaultActiveWidgetTab()`
+- Filament v3 projects should stay on `^1.0`
 
 ## Contributing
 

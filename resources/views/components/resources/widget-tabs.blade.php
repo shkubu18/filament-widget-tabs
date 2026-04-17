@@ -8,7 +8,6 @@
             widgetTab: $wire.$entangle('activeWidgetTab'),
             toggleWidgetTab(tabKey) {
                 this.widgetTab = this.widgetTab === tabKey ? null : tabKey;
-                $wire.resetTable();
             }
         }"
     >
@@ -22,15 +21,18 @@
                 @endphp
 
                 <x-filament-widget-tabs::widget-tabs.item
+                    :active="$activeWidgetTab === $widgetTabKey"
                     :alpine-active="'widgetTab === \'' . $widgetTabKey . '\''"
                     x-on:click="toggleWidgetTab('{{ $widgetTabKey }}')"
+                    x-on:keydown.enter.prevent="toggleWidgetTab('{{ $widgetTabKey }}')"
+                    x-on:keydown.space.prevent="toggleWidgetTab('{{ $widgetTabKey }}')"
                     :value="$widgetTab->getValue()"
                     :precision="$widgetTab->getPrecision()"
                     :icon="$widgetTab->getIcon()"
                     :iconSize="$widgetTab->getIconSize()"
                     :isPercentage="$widgetTab->isPercentage()"
                     :percentagePrecision="$widgetTab->getPercentagePrecision()"
-                    :label="$widgetTab->getLabel() ?? $this->generateTabLabel($widgetTabKey)"
+                    :label="$widgetTab->getLabel() ?? $this->generateWidgetTabLabel($widgetTabKey)"
                     :theme-classes="$widgetTab->getThemeClasses()"
                     :attributes="$widgetTab->getExtraAttributeBag()"
                 />

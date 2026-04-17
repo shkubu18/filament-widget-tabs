@@ -2,6 +2,30 @@
 
 All notable changes to `filament-widget-tabs` will be documented in this file.
 
+## Release - v2.0.0 - 2026-04-16
+
+### Release Notes - v2.0.0
+
+#### Breaking Changes
+
+- Filament v3 support moved to the `1.x` maintenance line.
+- `2.x` now targets Filament `^4.0|^5.0` and PHP `^8.2`.
+
+#### New Features
+
+- Added support for Filament v4 and v5.
+- Added `excludeQueryWhenResolvingRecord()` to widget tabs for record-resolution query control.
+- Added compatibility alias for auto-loading default tab:
+    - Canonical: `shouldLoadDefaultActiveWidgetTab()`
+    - Backward compatible: `shouldAutoLoadDefaultActiveWidgetTab()`
+
+#### Changes
+
+- Registered compiled plugin CSS through Filament asset registration.
+- Improved tab accessibility by syncing active state to `aria-selected` and keyboard handling.
+- Replaced `resetTable()` tab click behavior with non-destructive active tab updates.
+- Removed stale facade alias and dead JS build script references.
+
 ## Release - v1.0.4 - 2025-09-13
 
 ### Release Notes - v1.0.4
